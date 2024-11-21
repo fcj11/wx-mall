@@ -4,11 +4,11 @@
 
 ## 功能特性
 - 首页
-- <img src="[drawing.jpg](https://github.com/user-attachments/assets/24160b5b-f05b-41e8-803c-c4721d3fb308)" alt="drawing" width="100" height="100"/>
-
 - ![4381732213978_ pic_hd](https://github.com/user-attachments/assets/24160b5b-f05b-41e8-803c-c4721d3fb308)
 - 商品浏览和搜索
   - 搜索
+  - <img src="https://github.com/user-attachments/assets/9efd3391-6037-435a-b3dc-1020ff9cd861" width="100px">
+
   - ![image](https://github.com/user-attachments/assets/9efd3391-6037-435a-b3dc-1020ff9cd861)
   - 商品浏览
   - ![image](https://github.com/user-attachments/assets/47a7e839-6708-4aad-9751-539b111f84e0)

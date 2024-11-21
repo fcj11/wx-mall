@@ -1,0 +1,66 @@
+<view class="checkout-container">
+  <!-- 收货地址 -->
+  <view class="address-section" bindtap="handleChooseAddress">
+    <view class="address-content" wx:if="{{address}}">
+      <view class="user-info">
+        <text class="name">{{address.name}}</text>
+        <text class="phone">{{address.phone}}</text>
+      </view>
+      <view class="address-detail">
+        {{address.province}}{{address.city}}{{address.district}}{{address.detail}}
+      </view>
+    </view>
+    <view class="no-address" wx:else>
+      <text>请选择收货地址</text>
+    </view>
+    <view class="right-arrow">></view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="goods-list">
+    <view class="goods-item" wx:for="{{goodsList}}" wx:key="id">
+      <image class="goods-image" src="{{item.image}}" mode="aspectFill"/>
+      <view class="goods-info">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-specs">{{item.specs}}</view>
+        <view class="price-quantity">
+          <text class="price">¥{{item.price}}</text>
+          <text class="quantity">x{{item.quantity}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="remark-section">
+    <text class="label">备注</text>
+    <input class="remark-input" 
+           placeholder="请输入备注信息" 
+           value="{{remark}}"
+           bindinput="handleRemarkInput"/>
+  </view>
+
+  <!-- 价格信息 -->
+  <view class="price-section">
+    <view class="price-item">
+      <text>商品总价</text>
+      <text class="price">¥{{totalPrice}}</text>
+    </view>
+    <view class="price-item">
+      <text>运费</text>
+      <text>免运费</text>
+    </view>
+  </view>
+
+  <!-- 底部提交栏 -->
+  <view class="bottom-bar">
+    <view class="total-section">
+      <text>实付款：</text>
+      <text class="total-price">¥{{totalPrice}}</text>
+    </view>
+    <button class="submit-btn" bindtap="handleSubmitOrder">提交订单</button>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-block"></view>
+</view> 

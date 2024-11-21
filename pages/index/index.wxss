@@ -1,0 +1,231 @@
+/* 保留容器、搜索框、轮播图和导航菜单的样式 */
+.container {
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+/* 搜索框样式 */
+.search-box {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 20rpx 30rpx;
+  background: #fff;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  height: 72rpx;
+  background: #f5f5f5;
+  border-radius: 36rpx;
+  padding: 0 30rpx;
+  transition: all 0.3s;
+}
+
+.search-input:active {
+  background: #f0f0f0;
+  transform: scale(0.98);
+}
+
+.placeholder {
+  color: #999;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+/* 轮播图样式 */
+.banner {
+  height: 300rpx;
+  margin: 20rpx;
+}
+
+.banner-item {
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.01);
+}
+
+/* 导航菜单样式 */
+.nav-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 40rpx;
+  margin: 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx;
+}
+
+.nav-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+  transition: transform 0.3s;
+}
+
+.nav-item:active .nav-icon {
+  transform: scale(1.2);
+}
+
+.nav-name {
+  font-size: 24rpx;
+  color: #333;
+}
+
+/* 瀑布流样式 */
+.waterfall {
+  display: flex;
+  padding: 10rpx;
+  justify-content: space-between;
+}
+
+.waterfall-column {
+  width: 49%;
+}
+
+.goods-item {
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.goods-image {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  background: #f7f7f7;
+}
+
+.goods-image image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.goods-info {
+  padding: 12rpx 16rpx;
+  background: #fff;
+  position: relative;
+  padding-bottom: 20rpx;
+}
+
+.goods-title {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.4;
+  height: 76rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 8rpx;
+  font-weight: 500;
+}
+
+.goods-price-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rpx;
+  padding-right: 60rpx;
+}
+
+.price-group {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-symbol {
+  font-size: 24rpx;
+  color: #ff2d4a;
+  margin-right: 2rpx;
+}
+
+.goods-price {
+  font-size: 32rpx;
+  color: #ff2d4a;
+  font-weight: bold;
+}
+
+.goods-sales {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.goods-buy {
+  position: absolute;
+  right: 16rpx;
+  bottom: 16rpx;
+  width: 44rpx;
+  height: 44rpx;
+  background: linear-gradient(135deg, #ff2d4a, #ff6b6b);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(255, 45, 74, 0.3);
+  transition: all 0.3s;
+}
+
+.goods-buy:active {
+  transform: scale(0.9);
+}
+
+.goods-buy-icon {
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+/* 加载状态样式 */
+.loading-status {
+  padding: 30rpx;
+  text-align: center;
+}
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.loading-icon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  border: 3rpx solid #f0f0f0;
+  border-top-color: #999;
+  border-radius: 50%;
+  animation: loading 0.8s linear infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.finished {
+  color: #999;
+  font-size: 24rpx;
+}

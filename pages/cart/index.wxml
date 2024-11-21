@@ -1,0 +1,94 @@
+<view class="cart-container">
+  <!-- 购物车为空时的展示 -->
+  <view class="cart-empty" wx:if="{{cartList.length === 0}}">
+    <view class="empty-icon">🛒</view>
+    <text class="empty-text">购物车还是空的</text>
+    <button class="go-shopping" bindtap="handleGoShopping">去逛逛</button>
+  </view>
+
+  <!-- 购物车有商品时的展示 -->
+  <block wx:else>
+    <!-- 编辑栏 -->
+    <view class="edit-bar">
+      <view class="edit-btn" bindtap="handleEdit">
+        {{isEdit ? '完成' : '编辑'}}
+      </view>
+    </view>
+
+    <!-- 商品列表 -->
+    <scroll-view scroll-y class="cart-list" 
+                 enhanced="{{true}}" 
+                 show-scrollbar="{{false}}"
+                 fast-deceleration="{{true}}">
+      <view class="cart-item" wx:for="{{cartList}}" wx:key="id">
+        <view class="checkbox">
+          <icon type="{{item.checked ? 'success' : 'circle'}}" 
+                size="20" 
+                color="{{item.checked ? '#ff2d4a' : '#999'}}"
+                bindtap="handleCheck"
+                data-index="{{index}}"/>
+        </view>
+        <view class="goods-content" bindtap="handleGoodsClick" data-id="{{item.id}}">
+          <image class="goods-image" 
+                 src="{{item.image}}" 
+                 mode="aspectFill"
+                 lazy-load/>
+          <view class="goods-info">
+            <view class="goods-title">{{item.title}}</view>
+            <view class="goods-specs">{{item.specs}}</view>
+            <view class="price-quantity">
+              <text class="goods-price">¥{{item.price}}</text>
+              <view class="quantity-control">
+                <text class="minus {{item.quantity <= 1 ? 'disabled' : ''}}" 
+                      catchtap="handleMinus" 
+                      data-index="{{index}}">-</text>
+                <input class="quantity" 
+                       type="number" 
+                       value="{{item.quantity}}"
+                       bindblur="handleQuantityInput"
+                       data-index="{{index}}"/>
+                <text class="plus" 
+                      catchtap="handlePlus" 
+                      data-index="{{index}}">+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 底部结算栏 -->
+    <view class="bottom-bar {{isEdit ? 'edit-mode' : ''}}">
+      <view class="select-all" bindtap="handleSelectAll">
+        <icon type="{{allChecked ? 'success' : 'circle'}}" 
+              size="20" 
+              color="{{allChecked ? '#ff2d4a' : '#999'}}"/>
+        <text>全选</text>
+      </view>
+      
+      <!-- 非编辑模式显示价格和结算按钮 -->
+      <block wx:if="{{!isEdit}}">
+        <view class="total-section">
+          <view class="price-section">
+            <text>合计：</text>
+            <text class="total-price">¥{{totalPrice}}</text>
+          </view>
+          <text class="total-desc">不含运费</text>
+        </view>
+        <button class="checkout-btn" bindtap="handleCheckout">
+          结算({{selectedCount}})
+        </button>
+      </block>
+      
+      <!-- 编辑模式只显示删除按钮 -->
+      <block wx:else>
+        <button class="delete-btn" bindtap="handleDelete">
+          删除({{selectedCount}})
+        </button>
+      </block>
+    </view>
+
+    <!-- 添加底部安全区域占位 -->
+    <view class="safe-area-block"></view>
+  </block>
+</view>

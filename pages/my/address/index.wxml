@@ -1,0 +1,46 @@
+<view class="address-container">
+  <!-- 地址列表 -->
+  <scroll-view scroll-y class="address-list">
+    <view class="address-item" 
+          wx:for="{{addressList}}" 
+          wx:key="id"
+          bindtap="handleSelectAddress"
+          data-address="{{item}}">
+      <view class="address-info">
+        <view class="user-info">
+          <text class="name">{{item.name}}</text>
+          <text class="phone">{{item.phone}}</text>
+          <text class="default-tag" wx:if="{{item.isDefault}}">默认</text>
+        </view>
+        <view class="address-detail">
+          {{item.province}}{{item.city}}{{item.district}}{{item.detail}}
+        </view>
+      </view>
+      <view class="address-action">
+        <view class="action-item" catchtap="handleSetDefault" data-id="{{item.id}}">
+          <icon type="{{item.isDefault ? 'success' : 'circle'}}" 
+                size="16" 
+                color="{{item.isDefault ? '#ff2d4a' : '#999'}}"/>
+          <text>默认地址</text>
+        </view>
+        <view class="action-btn">
+          <button class="btn edit" 
+                  catchtap="handleEditAddress" 
+                  data-id="{{item.id}}">编辑</button>
+          <button class="btn delete" 
+                  catchtap="handleDeleteAddress" 
+                  data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 添加新地址按钮 -->
+  <view class="add-btn" bindtap="handleAddAddress">
+    <text class="icon">+</text>
+    <text>新增收货地址</text>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-block"></view>
+</view> 

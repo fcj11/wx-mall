@@ -1,0 +1,183 @@
+<view class="detail-container">
+  <!-- 商品图片轮播 -->
+  <swiper class="goods-swiper" 
+          indicator-dots 
+          circular
+          indicator-active-color="#ff2d4a"
+          bindchange="handleSwiperChange">
+    <swiper-item wx:for="{{goods.images}}" wx:key="*this">
+      <image src="{{item}}" 
+             mode="aspectFill" 
+             class="goods-image"
+             bindtap="handleImageClick"/>
+    </swiper-item>
+    <view class="swiper-index">{{currentIndex + 1}}/{{goods.images.length}}</view>
+  </swiper>
+
+  <!-- 商品信息 -->
+  <view class="goods-info">
+    <view class="price-section">
+      <view class="price-box">
+        <text class="price-symbol">¥</text>
+        <text class="price">{{goods.price}}</text>
+        <text class="original-price">¥{{goods.originalPrice}}</text>
+      </view>
+      <view class="share-btn" bindtap="handleShare">
+        <text class="share-icon">📤</text>
+        <text>分享</text>
+      </view>
+    </view>
+    <view class="title">{{goods.title}}</view>
+    <view class="desc">{{goods.desc}}</view>
+    <view class="sales-box">
+      <text class="sales">销量 {{goods.sales}}</text>
+      <text class="express">快递: 免运费</text>
+    </view>
+    <view class="goods-action">
+      <view class="action-item" bindtap="handleCollect">
+        <text class="iconfont {{isCollected ? 'icon-collected' : 'icon-collect'}}"></text>
+        <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品规格 -->
+  <view class="specs-section" bindtap="showSpecsPopup">
+    <view class="section-title">规格</view>
+    <view class="specs-preview">
+      <text>选择: 颜色、尺码</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 商品评价 -->
+  <view class="reviews-section">
+    <view class="section-header">
+      <view class="section-title">商品评价</view>
+      <view class="more" bindtap="handleMoreReviews">
+        <text>查看全部</text>
+        <text class="count">({{goods.reviewCount}})</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+    <view class="reviews-list" wx:if="{{goods.reviews.length > 0}}">
+      <view class="review-item" wx:for="{{goods.reviews}}" wx:key="id">
+        <image class="avatar" src="{{item.avatar}}" mode="aspectFill"/>
+        <view class="review-content">
+          <view class="review-header">
+            <text class="username">{{item.username}}</text>
+            <text class="date">{{item.date}}</text>
+          </view>
+          <view class="review-text">{{item.content}}</view>
+          <view class="review-images" wx:if="{{item.images.length > 0}}">
+            <image wx:for="{{item.images}}" 
+                   wx:key="*this" 
+                   wx:for-item="img"
+                   src="{{img}}" 
+                   mode="aspectFill"
+                   bindtap="handleReviewImageClick"
+                   data-urls="{{item.images}}"
+                   data-current="{{img}}"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="no-reviews" wx:else>暂无评价</view>
+  </view>
+
+  <!-- 商品详情 -->
+  <view class="detail-section">
+    <view class="section-title">商品详情</view>
+    <view class="detail-content">
+      <rich-text nodes="{{goods.detail}}"></rich-text>
+      <image wx:for="{{goods.detailImages}}" 
+             wx:key="*this"
+             src="{{item}}"
+             mode="widthFix"
+             class="detail-image"
+             lazy-load/>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="action-buttons">
+      <view class="action-item" bindtap="handleHomeClick">
+        <text class="icon">🏠</text>
+        <text>首页</text>
+      </view>
+      <view class="action-item" bindtap="handleFavoriteClick">
+        <text class="icon">{{isFavorite ? '❤️' : '🤍'}}</text>
+        <text>收藏</text>
+      </view>
+      <view class="action-item" bindtap="handleCartClick">
+        <text class="icon">🛒</text>
+        <text>购物车</text>
+        <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
+      </view>
+    </view>
+    <view class="buy-buttons">
+      <button class="add-cart" 
+              bindtap="handleAddCart" 
+              hover-class="none">加入购物车</button>
+      <button class="buy-now" 
+              bindtap="handleBuyNow"
+              hover-class="none">立即购买</button>
+    </view>
+  </view>
+
+  <!-- 规格选择弹窗 -->
+  <view class="specs-popup {{showSpecs ? 'show' : ''}}" catchtouchmove="preventTouchMove">
+    <view class="popup-mask" bindtap="hideSpecsPopup"></view>
+    <view class="popup-content">
+      <view class="popup-header">
+        <image class="goods-thumb" src="{{goods.images[0]}}" mode="aspectFill"/>
+        <view class="selected-info">
+          <view class="selected-price">¥{{goods.price}}</view>
+          <view class="selected-specs">请选择规格</view>
+        </view>
+        <view class="close-btn" bindtap="hideSpecsPopup">×</view>
+      </view>
+      <scroll-view scroll-y class="specs-list">
+        <!-- 颜色选择 -->
+        <view class="specs-group">
+          <view class="group-title">颜色</view>
+          <view class="specs-options">
+            <text class="spec-item {{colorIndex === index ? 'active' : ''}}"
+                  wx:for="{{specs.colors}}"
+                  wx:key="*this"
+                  bindtap="handleColorSelect"
+                  data-index="{{index}}">{{item}}</text>
+          </view>
+        </view>
+        <!-- 尺码选择 -->
+        <view class="specs-group">
+          <view class="group-title">尺码</view>
+          <view class="specs-options">
+            <text class="spec-item {{sizeIndex === index ? 'active' : ''}}"
+                  wx:for="{{specs.sizes}}"
+                  wx:key="*this"
+                  bindtap="handleSizeSelect"
+                  data-index="{{index}}">{{item}}</text>
+          </view>
+        </view>
+        <!-- 数量选择 -->
+        <view class="specs-group">
+          <view class="group-title">数量</view>
+          <view class="quantity-selector">
+            <text class="minus {{quantity <= 1 ? 'disabled' : ''}}" 
+                  bindtap="handleQuantityMinus">-</text>
+            <input class="quantity" 
+                   type="number" 
+                   value="{{quantity}}"
+                   bindblur="handleQuantityInput"/>
+            <text class="plus" bindtap="handleQuantityPlus">+</text>
+          </view>
+        </view>
+      </scroll-view>
+      <view class="popup-buttons">
+        <button class="confirm-btn" bindtap="handleSpecsConfirm">确定</button>
+      </view>
+    </view>
+  </view>
+</view> 

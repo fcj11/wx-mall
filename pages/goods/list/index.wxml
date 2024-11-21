@@ -1,0 +1,54 @@
+<view class="list-container">
+  <view class="goods-list">
+    <view class="goods-item" 
+          wx:for="{{goodsList}}" 
+          wx:key="id"
+          id="goods-item-{{index}}"
+          bindtap="handleGoodsClick"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+          hover-class="goods-item-hover">
+      <view class="goods-image">
+        <image src="{{item.image}}" mode="aspectFill" lazy-load/>
+        <!-- 商品标签 -->
+        <view class="goods-tag" style="color: {{item.tagColor}}; background: {{item.tagBg}}">
+          <text class="tag-icon">{{item.icon}}</text>
+          <text>{{item.tag}}</text>
+        </view>
+        <!-- 新品上架时间 -->
+        <view class="new-tag" wx:if="{{item.newTag}}">{{item.newTag}}</view>
+      </view>
+      <view class="goods-info">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="price-box">
+          <view class="price-group">
+            <text class="price-symbol">¥</text>
+            <text class="goods-price">{{item.price}}</text>
+            <!-- 特惠商品显示折扣 -->
+            <view class="discount-tag" wx:if="{{item.discount}}">
+              {{item.discount}}折
+            </view>
+          </view>
+          <!-- 原价 -->
+          <text class="original-price" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+        </view>
+        <!-- 热卖商品突出销量 -->
+        <view class="sales-box" wx:if="{{typeInfo[type].showSales}}">
+          <text class="sales-count">已售{{item.sales}}件</text>
+          <view class="sales-bar">
+            <view class="sales-progress" style="width: {{item.sales > 5000 ? 100 : item.sales/50}}%"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-status">
+    <view wx:if="{{loading}}" class="loading">
+      <view class="loading-icon"></view>
+      <text>加载中...</text>
+    </view>
+    <view wx:if="{{finished}}" class="finished">已经到底啦 ~</view>
+  </view>
+</view> 

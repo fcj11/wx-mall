@@ -1,0 +1,40 @@
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header" wx:if="{{footprints.length}}">
+    <text>共{{footprints.length}}条足迹</text>
+    <text class="clear-btn" bindtap="handleClearAll">清空足迹</text>
+  </view>
+
+  <!-- 足迹列表 -->
+  <scroll-view scroll-y class="footprint-list" 
+               bindscrolltolower="loadMore"
+               enhanced="{{true}}" 
+               show-scrollbar="{{false}}">
+    <view class="date-group" wx:for="{{groupedFootprints}}" wx:key="date">
+      <view class="date-header">{{item.date}}</view>
+      <view class="footprint-item" 
+            wx:for="{{item.list}}" 
+            wx:key="id"
+            wx:for-item="goods"
+            bindtap="handleGoodsClick"
+            data-id="{{goods.id}}">
+        <image class="goods-image" src="{{goods.image}}" mode="aspectFill"/>
+        <view class="goods-info">
+          <view class="goods-title">{{goods.title}}</view>
+          <view class="goods-price">
+            <text class="price">¥{{goods.price}}</text>
+            <button class="btn delete-btn" 
+                    catchtap="handleDelete" 
+                    data-id="{{goods.id}}">删除</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{!footprints.length}}">
+      <text class="empty-icon">👣</text>
+      <text class="empty-text">暂无浏览足迹</text>
+    </view>
+  </scroll-view>
+</view> 

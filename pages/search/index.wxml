@@ -1,0 +1,72 @@
+<view class="search-container">
+  <!-- 搜索框 -->
+  <view class="search-header">
+    <view class="search-input-wrap">
+      <icon type="search" size="16" color="#999"/>
+      <input class="search-input"
+             value="{{keyword}}"
+             placeholder="请输入搜索内容"
+             confirm-type="search"
+             bindinput="handleInput"
+             bindconfirm="handleSearch"
+             focus/>
+      <icon type="clear" 
+            size="16" 
+            color="#999" 
+            wx:if="{{keyword}}"
+            bindtap="handleClear"/>
+    </view>
+    <view class="search-btn" bindtap="handleCancel">取消</view>
+  </view>
+
+  <!-- 搜索下拉框 -->
+  <view class="search-dropdown" wx:if="{{keyword && showDropdown}}">
+    <view class="dropdown-item"
+          wx:for="{{searchSuggestions}}"
+          wx:key="*this"
+          bindtap="handleSuggestionClick"
+          data-keyword="{{item}}">
+      <icon type="search" size="14" color="#999"/>
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 搜索历史和热门搜索 -->
+  <block wx:if="{{!keyword}}">
+    <!-- 搜索历史 -->
+    <view class="search-history" wx:if="{{historyList.length > 0}}">
+      <view class="section-header">
+        <text class="title">搜索历史</text>
+        <view class="clear-btn" bindtap="handleClearHistory">
+          <icon type="clear" size="12" color="#999"/>
+          <text>清空</text>
+        </view>
+      </view>
+      <view class="tag-list">
+        <view class="tag-item"
+              wx:for="{{historyList}}"
+              wx:key="*this"
+              bindtap="handleSearchItem"
+              data-keyword="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 热门搜索 -->
+    <view class="hot-search">
+      <view class="section-header">
+        <text class="title">热门搜索</text>
+      </view>
+      <view class="tag-list">
+        <view class="tag-item {{index < 3 ? 'hot' : ''}}"
+              wx:for="{{hotList}}"
+              wx:key="*this"
+              bindtap="handleSearchItem"
+              data-keyword="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </block>
+</view> 

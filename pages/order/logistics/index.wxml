@@ -1,0 +1,38 @@
+<!--pages/order/logistics/index.wxml-->
+<view class="logistics-container">
+  <view class="logistics-header">
+    <view class="company-info">
+      <image class="company-logo" src="/assets/icons/sf-logo.png" mode="aspectFit"/>
+      <view class="company-detail">
+        <text class="company-name">{{logistics.company}}</text>
+        <view class="tracking-info">
+          <text class="tracking-number">运单号：{{logistics.trackingNo}}</text>
+          <text class="copy" bindtap="handleCopy">复制</text>
+        </view>
+      </view>
+    </view>
+    <view class="delivery-status">{{logistics.status}}</view>
+  </view>
+
+  <view class="timeline">
+    <view class="timeline-item {{index === 0 ? 'active' : ''}}"
+          wx:for="{{logistics.tracks}}" 
+          wx:key="time">
+      <view class="time-point"></view>
+      <view class="track-info">
+        <view class="track-desc">{{item.desc}}</view>
+        <view class="track-time">{{item.time}}</view>
+        <view class="contact-btn" 
+              wx:if="{{item.phone}}"
+              data-phone="{{item.phone}}"
+              catchtap="handleContact">
+          联系快递员
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-tips">
+    <text>已显示全部物流信息</text>
+  </view>
+</view>

@@ -1,0 +1,100 @@
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <view class="search-input" bindtap="handleSearchClick">
+      <icon type="search" size="32rpx" color="#999"/>
+      <text class="placeholder">搜索心仪的商品</text>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <swiper class="banner" 
+          indicator-dots 
+          autoplay 
+          circular
+          indicator-active-color="#ff2d4a"
+          indicator-color="rgba(255, 255, 255, 0.6)">
+    <swiper-item wx:for="{{banners}}" wx:key="id" class="banner-item">
+      <image src="{{item.image}}" mode="aspectFill" class="banner-image"/>
+    </swiper-item>
+  </swiper>
+
+  <!-- 导航菜单 -->
+  <view class="nav-section">
+    <view class="nav-item" 
+          wx:for="{{navs}}" 
+          wx:key="id"
+          bindtap="handleNavClick"
+          data-id="{{item.id}}">
+      <view class="nav-icon">{{item.icon}}</view>
+      <text class="nav-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 瀑布流商品列表 -->
+  <view class="waterfall">
+    <view class="waterfall-column">
+      <view class="goods-item" 
+            wx:for="{{goodsList}}" 
+            wx:key="id"
+            wx:if="{{index % 2 === 0}}"
+            data-id="{{item.id}}"
+            bindtap="handleGoodsClick">
+        <view class="goods-image">
+          <image src="{{item.image}}" 
+                 mode="aspectFill" 
+                 lazy-load/>
+        </view>
+        <view class="goods-info">
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-price-box">
+            <view class="price-group">
+              <text class="price-symbol">¥</text>
+              <text class="goods-price">{{item.price}}</text>
+            </view>
+            <view class="goods-sales">{{item.sales}}人已购</view>
+          </view>
+        </view>
+        <view class="goods-buy" catchtap="handleBuyClick" data-id="{{item.id}}">
+          <text class="goods-buy-icon">+</text>
+        </view>
+      </view>
+    </view>
+    <view class="waterfall-column">
+      <view class="goods-item" 
+            wx:for="{{goodsList}}" 
+            wx:key="id"
+            wx:if="{{index % 2 === 1}}"
+            data-id="{{item.id}}"
+            bindtap="handleGoodsClick">
+        <view class="goods-image">
+          <image src="{{item.image}}" 
+                 mode="aspectFill" 
+                 lazy-load/>
+        </view>
+        <view class="goods-info">
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-price-box">
+            <view class="price-group">
+              <text class="price-symbol">¥</text>
+              <text class="goods-price">{{item.price}}</text>
+            </view>
+            <view class="goods-sales">{{item.sales}}人已购</view>
+          </view>
+        </view>
+        <view class="goods-buy" catchtap="handleBuyClick" data-id="{{item.id}}">
+          <text class="goods-buy-icon">+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-status">
+    <view wx:if="{{loading}}" class="loading">
+      <view class="loading-icon"></view>
+      <text>加载中...</text>
+    </view>
+    <view wx:if="{{finished}}" class="finished">已经到底啦 ~</view>
+  </view>
+</view> 

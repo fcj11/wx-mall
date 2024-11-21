@@ -1,0 +1,77 @@
+<!--pages/my/coupons/index.wxml-->
+<view class="coupons-container">
+  <!-- 顶部标签栏 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'valid' ? 'active' : ''}}"
+          bindtap="handleTabChange"
+          data-tab="valid">
+      可使用
+    </view>
+    <view class="tab-item {{activeTab === 'used' ? 'active' : ''}}"
+          bindtap="handleTabChange"
+          data-tab="used">
+      已使用
+    </view>
+    <view class="tab-item {{activeTab === 'expired' ? 'active' : ''}}"
+          bindtap="handleTabChange"
+          data-tab="expired">
+      已过期
+    </view>
+  </view>
+
+  <!-- 优惠券列表 -->
+  <scroll-view scroll-y class="coupon-list">
+    <view class="coupon-item {{coupon.status !== 'valid' ? 'disabled' : ''}}"
+          wx:for="{{couponList}}"
+          wx:key="id"
+          wx:for-item="coupon"
+          bindtap="handleUseCoupon"
+          data-coupon="{{coupon}}">
+      <!-- 优惠券主体 -->
+      <view class="coupon-content">
+        <view class="coupon-left">
+          <block wx:if="{{coupon.type === 'discount'}}">
+            <view class="discount">
+              <text class="number">{{coupon.discount * 10}}</text>
+              <text class="unit">折</text>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="amount">
+              <text class="symbol">¥</text>
+              <text class="number">{{coupon.amount}}</text>
+            </view>
+          </block>
+          <view class="condition">满{{coupon.minAmount}}元可用</view>
+        </view>
+        <view class="coupon-right">
+          <view class="coupon-name">{{coupon.name}}</view>
+          <view class="coupon-time">
+            {{coupon.validStartTime}} - {{coupon.validEndTime}}
+          </view>
+          <view class="coupon-desc">{{coupon.description}}</view>
+        </view>
+      </view>
+      <!-- 优惠券底部 -->
+      <view class="coupon-footer">
+        <block wx:if="{{coupon.status === 'valid'}}">
+          <text class="use-btn">立即使用</text>
+        </block>
+        <block wx:elif="{{coupon.status === 'used'}}">
+          <text class="status-text">已使用 {{coupon.useTime}}</text>
+        </block>
+        <block wx:else>
+          <text class="status-text">已过期</text>
+        </block>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-status">
+      <view wx:if="{{loading}}" class="loading">加载中...</view>
+      <view wx:if="{{!loading && couponList.length === 0}}" class="empty">
+        暂无优惠券
+      </view>
+    </view>
+  </scroll-view>
+</view>

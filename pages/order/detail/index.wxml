@@ -1,0 +1,112 @@
+<view class="order-detail">
+  <!-- 订单状态 -->
+  <view class="status-section">
+    <view class="status-text">{{order.status === 'UNPAID' ? '等待买家付款' : '交易成功'}}</view>
+    <view class="status-desc">{{order.status === 'UNPAID' ? '请尽快完成支付' : '感谢您的购买'}}</view>
+  </view>
+
+  <!-- 收货地址 -->
+  <view class="address-section">
+    <view class="address-title">收货地址</view>
+    <view class="address-content">
+      <view class="user-info">
+        <text class="name">{{order.address.name}}</text>
+        <text class="phone">{{order.address.phone}}</text>
+      </view>
+      <view class="address-detail">
+        {{order.address.province}}{{order.address.city}}{{order.address.district}}{{order.address.detail}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="goods-section">
+    <view class="goods-title">商品信息</view>
+    <view class="goods-list">
+      <view class="goods-item" 
+            wx:for="{{order.goodsList}}" 
+            wx:key="id"
+            bindtap="handleGoodsClick"
+            data-id="{{item.id}}">
+        <image class="goods-image" src="{{item.image}}" mode="aspectFill"/>
+        <view class="goods-info">
+          <view class="goods-name">{{item.title}}</view>
+          <view class="goods-specs">{{item.specs}}</view>
+          <view class="price-quantity">
+            <text class="price">¥{{item.price}}</text>
+            <text class="quantity">x{{item.quantity}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-info">
+    <view class="info-title">订单信息</view>
+    <view class="info-item">
+      <text class="label">订单编号</text>
+      <text class="value">{{order.id}}</text>
+      <text class="copy" catchtap="handleCopy">复制</text>
+    </view>
+    <view class="info-item">
+      <text class="label">创建时间</text>
+      <text class="value">{{order.createTime}}</text>
+    </view>
+    <view class="info-item" wx:if="{{order.payTime}}">
+      <text class="label">付款时间</text>
+      <text class="value">{{order.payTime}}</text>
+    </view>
+    <view class="info-item" wx:if="{{order.remark}}">
+      <text class="label">备注信息</text>
+      <text class="value">{{order.remark}}</text>
+    </view>
+  </view>
+
+  <!-- 价格信息 -->
+  <view class="price-section">
+    <view class="price-item">
+      <text class="label">商品总价</text>
+      <text class="value">¥{{order.totalPrice}}</text>
+    </view>
+    <view class="price-item">
+      <text class="label">运费</text>
+      <text class="value">免运费</text>
+    </view>
+    <view class="price-item total">
+      <text class="label">实付款</text>
+      <text class="value">¥{{order.totalPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 分享按钮 -->
+  <view class="share-section">
+    <button class="share-btn" open-type="share">
+      <text class="icon">🔗</text>
+      <text>分享给好友</text>
+    </button>
+    <button class="share-btn" bindtap="handleCreatePoster">
+      <text class="icon">🖼️</text>
+      <text>生成海报</text>
+    </button>
+  </view>
+
+  <!-- 分享海报画布（隐藏） -->
+  <canvas canvas-id="sharePoster" 
+          style="width: 750px; height: 1000px; position: fixed; left: -9999px;"/>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <block wx:if="{{order.status === 'UNPAID'}}">
+      <button class="btn" bindtap="handleCancel">取消订单</button>
+      <button class="btn primary" bindtap="handlePay">继续支付</button>
+    </block>
+    <block wx:else>
+      <button class="btn" bindtap="handleDelete">删除订单</button>
+      <button class="btn primary" bindtap="handleBuyAgain">再次购买</button>
+    </block>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-block"></view>
+</view> 

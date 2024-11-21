@@ -1,0 +1,89 @@
+<view class="favorites-container">
+  <!-- 顶部切换栏 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'goods' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-tab="goods">
+      商品收藏
+    </view>
+    <view class="tab-item {{activeTab === 'shop' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-tab="shop">
+      店铺收藏
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <scroll-view scroll-y class="goods-list" wx:if="{{activeTab === 'goods'}}"
+               enhanced="{{true}}" 
+               show-scrollbar="{{false}}"
+               bindscrolltolower="loadMore">
+    <view class="goods-item" 
+          wx:for="{{goodsList}}" 
+          wx:key="id">
+      <view class="goods-content" bindtap="handleGoodsClick" data-id="{{item.id}}">
+        <image class="goods-image" src="{{item.image}}" mode="aspectFill" lazy-load/>
+        <view class="goods-info">
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-price">¥{{item.price}}</view>
+        </view>
+      </view>
+      <!-- 操作按钮浮动在卡片上 -->
+      <view class="action-buttons">
+        <button class="action-btn add-cart" 
+                catchtap="handleAddCart" 
+                data-id="{{item.id}}">
+          <text class="btn-icon">加入购物车</text>
+        </button>
+        <button class="action-btn remove" 
+                catchtap="handleUnfavorite" 
+                data-id="{{item.id}}">
+          <text class="btn-icon">取消收藏</text>
+        </button>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-status">
+      <view wx:if="{{loading}}" class="loading">加载中...</view>
+      <view wx:if="{{finished && goodsList.length > 0}}" class="finished">没有更多了</view>
+      <view wx:if="{{finished && goodsList.length === 0}}" class="empty">
+        <text class="empty-icon">❤️</text>
+        <text class="empty-text">暂无收藏商品</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 店铺列表 -->
+  <scroll-view scroll-y class="shop-list" wx:else
+               enhanced="{{true}}" 
+               show-scrollbar="{{false}}"
+               bindscrolltolower="loadMore">
+    <view class="shop-item" 
+          wx:for="{{shopList}}" 
+          wx:key="id"
+          bindtap="handleShopClick"
+          data-id="{{item.id}}">
+      <image class="shop-logo" src="{{item.logo}}" mode="aspectFill"/>
+      <view class="shop-info">
+        <view class="shop-name">{{item.name}}</view>
+        <view class="shop-desc">{{item.desc}}</view>
+      </view>
+      <button class="unfollow-btn" 
+              catchtap="handleUnfollow" 
+              data-id="{{item.id}}">
+        取关注
+      </button>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-status">
+      <view wx:if="{{loading}}" class="loading">加载中...</view>
+      <view wx:if="{{finished && shopList.length > 0}}" class="finished">没有更多了</view>
+      <view wx:if="{{finished && shopList.length === 0}}" class="empty">
+        <text class="empty-icon">🏪</text>
+        <text class="empty-text">暂无收藏店铺</text>
+      </view>
+    </view>
+  </scroll-view>
+</view> 

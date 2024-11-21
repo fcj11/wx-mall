@@ -1,0 +1,161 @@
+/* pages/my/coupons/index.wxss */
+.coupons-container {
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+/* 标签栏 */
+.tab-bar {
+  display: flex;
+  background: #fff;
+  padding: 0 30rpx;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tab-item {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #ff2d4a;
+  font-weight: 500;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background: #ff2d4a;
+  border-radius: 2rpx;
+}
+
+/* 优惠券列表 */
+.coupon-list {
+  padding: 20rpx;
+}
+
+.coupon-item {
+  margin-bottom: 20rpx;
+  border-radius: 12rpx;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.coupon-item.disabled {
+  opacity: 0.6;
+}
+
+/* 优惠券主体 */
+.coupon-content {
+  display: flex;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #ff2d4a 0%, #ff6b6b 100%);
+}
+
+.coupon-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 30rpx;
+  border-right: 2rpx dashed rgba(255, 255, 255, 0.3);
+}
+
+.discount, .amount {
+  color: #fff;
+  text-align: center;
+}
+
+.discount .number {
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.discount .unit {
+  font-size: 32rpx;
+}
+
+.amount .symbol {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.amount .number {
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.condition {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 8rpx;
+}
+
+.coupon-right {
+  flex: 1;
+  padding-left: 30rpx;
+}
+
+.coupon-name {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.coupon-time {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8rpx;
+}
+
+.coupon-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 优惠券底部 */
+.coupon-footer {
+  padding: 20rpx;
+  background: #fff;
+  text-align: right;
+}
+
+.use-btn {
+  display: inline-block;
+  padding: 8rpx 24rpx;
+  background: #ff2d4a;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 24rpx;
+}
+
+.status-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 加载状态 */
+.loading-status {
+  padding: 30rpx;
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.empty {
+  padding: 100rpx 0;
+}

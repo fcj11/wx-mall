@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/index",
+    "pages/cart/index",
+    "pages/my/index",
+    "pages/checkout/index",
+    "pages/search/index",
+    "pages/goods/detail/index",
+    "pages/goods/list/index",
+    "pages/my/favorites/index",
+    "pages/my/footprints/index",
+    "pages/my/coupons/index",
+    "pages/order/list/index",
+    "pages/order/detail/index",
+    "pages/order/logistics/index",
+    "pages/order/rate/index",
+    "pages/my/address/index",
+    "pages/my/help/index",
+    "pages/my/feedback/index",
+    "pages/my/service/index",
+    "pages/my/settings/index",
+    "pages/my/address/edit/index",
+    "pages/my/settings/account/index",
+    "pages/my/settings/privacy/index",
+    "pages/my/settings/notification/index",
+    "pages/my/settings/about/index",
+    "pages/my/settings/agreement/index",
+    "pages/my/settings/privacy-policy/index",
+    "pages/my/settings/account/password/index",
+    "pages/my/settings/account/phone/index",
+    "pages/my/settings/account/realname/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#ff2d4a",
+    "backgroundColor": "#fafafa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+} 

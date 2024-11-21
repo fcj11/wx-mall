@@ -1,0 +1,196 @@
+.feedback-container {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding: 20rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+/* 通用样式 */
+.section-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+/* 反馈类型 */
+.type-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.type-list {
+  display: flex;
+  gap: 20rpx;
+}
+
+.type-item {
+  flex: 1;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.type-item.active {
+  background: rgba(255, 45, 74, 0.05);
+  border-color: #ff2d4a;
+}
+
+.type-item .icon {
+  font-size: 40rpx;
+  margin-bottom: 8rpx;
+}
+
+.type-item text:last-child {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 反馈内容 */
+.content-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.content-input {
+  width: 100%;
+  height: 240rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #333;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.word-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 图片上传 */
+.image-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-bottom: 8rpx;
+}
+
+.image-item {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+}
+
+.image-item image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -16rpx;
+  right: -16rpx;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24rpx;
+}
+
+.upload-btn {
+  width: 160rpx;
+  height: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+}
+
+.upload-btn .icon {
+  font-size: 48rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.upload-btn .text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.upload-tip {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 联系方式 */
+.contact-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 40rpx;
+}
+
+.contact-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #333;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+}
+
+/* 提交按钮 */
+.submit-section {
+  padding: 40rpx 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #ff2d4a;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+}
+
+/* 底部安全区域 */
+.safe-area-block {
+  height: env(safe-area-inset-bottom);
+  width: 100%;
+} 

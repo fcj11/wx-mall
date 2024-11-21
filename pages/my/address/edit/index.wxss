@@ -1,0 +1,93 @@
+.edit-container {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+.form-group {
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+}
+
+.form-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #333;
+  padding-top: 6rpx;
+}
+
+.input {
+  flex: 1;
+  height: 48rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.textarea {
+  flex: 1;
+  height: 160rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.picker {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.default-switch {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.save-btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #ff2d4a, #ff6b6b);
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+} 

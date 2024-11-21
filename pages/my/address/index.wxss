@@ -1,0 +1,152 @@
+/* pages/my/address/index.wxss */
+.address-container {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+/* 地址列表 */
+.address-list {
+  padding: 20rpx;
+}
+
+.address-item {
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 地址信息 */
+.address-info {
+  border-bottom: 1rpx solid #f5f5f5;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  margin-right: 20rpx;
+}
+
+.phone {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.default-tag {
+  font-size: 20rpx;
+  color: #ff2d4a;
+  border: 1rpx solid #ff2d4a;
+  padding: 2rpx 8rpx;
+  border-radius: 4rpx;
+  margin-left: 16rpx;
+}
+
+.address-detail {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* 地址操作 */
+.address-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.action-item icon {
+  margin-right: 8rpx;
+}
+
+.action-btn {
+  display: flex;
+  gap: 16rpx;
+}
+
+.btn {
+  min-width: 120rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  margin: 0;
+  padding: 0 24rpx;
+}
+
+.btn.edit {
+  background: #fff;
+  color: #333;
+  border: 1rpx solid #ddd;
+}
+
+.btn.delete {
+  background: #fff;
+  color: #ff2d4a;
+  border: 1rpx solid #ff2d4a;
+}
+
+/* 添加按钮 */
+.add-btn {
+  position: fixed;
+  bottom: env(safe-area-inset-bottom);
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #ff2d4a;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.add-btn .icon {
+  font-size: 40rpx;
+  margin-right: 8rpx;
+}
+
+/* 底部安全区域 */
+.safe-area-block {
+  height: env(safe-area-inset-bottom);
+  width: 100%;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  color: #ddd;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

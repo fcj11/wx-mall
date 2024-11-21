@@ -1,0 +1,69 @@
+<view class="my-container">
+  <!-- 用户信息区域 -->
+  <view class="user-section">
+    <view class="user-info" bindtap="handleLogin">
+      <image class="avatar" 
+             src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'}}" 
+             mode="aspectFill"/>
+      <view class="info">
+        <text class="nickname">{{userInfo.nickName || '点击登录'}}</text>
+        <text class="tips" wx:if="{{!userInfo.nickName}}">登录后享受更多权益</text>
+      </view>
+      <view class="arrow" wx:if="{{userInfo.nickName}}">></view>
+    </view>
+  </view>
+
+  <!-- 订单状态区域 -->
+  <view class="order-section">
+    <view class="section-header" bindtap="handleOrderType" data-type="all">
+      <text class="title">我的订单</text>
+      <view class="more">
+        <text>查看全部</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+    <view class="order-types">
+      <view class="type-item" bindtap="handleOrderType" data-type="unpaid">
+        <view class="badge" wx:if="{{orderStats.unpaid > 0}}">{{orderStats.unpaid}}</view>
+        <text class="icon">🕒</text>
+        <text>待付款</text>
+      </view>
+      <view class="type-item" bindtap="handleOrderType" data-type="unshipped">
+        <view class="badge" wx:if="{{orderStats.unshipped > 0}}">{{orderStats.unshipped}}</view>
+        <text class="icon">📦</text>
+        <text>待发货</text>
+      </view>
+      <view class="type-item" bindtap="handleOrderType" data-type="unreceived">
+        <view class="badge" wx:if="{{orderStats.unreceived > 0}}">{{orderStats.unreceived}}</view>
+        <text class="icon">🚚</text>
+        <text>待收货</text>
+      </view>
+      <view class="type-item" bindtap="handleOrderType" data-type="unrated">
+        <view class="badge" wx:if="{{orderStats.unrated > 0}}">{{orderStats.unrated}}</view>
+        <text class="icon">⭐</text>
+        <text>待评价</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单区域 -->
+  <view class="menu-section">
+    <view class="menu-item" 
+          wx:for="{{menuList}}" 
+          wx:key="title"
+          bindtap="handleMenuItem"
+          data-url="{{item.url}}">
+      <text class="icon">{{item.icon}}</text>
+      <text class="title">{{item.title}}</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 客服按钮 -->
+  <button class="contact-btn" open-type="contact" bindcontact="handleContact">
+    联系客服
+  </button>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-block"></view>
+</view> 

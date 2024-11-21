@@ -1,0 +1,29 @@
+<view class="account-container">
+  <!-- 账号信息 -->
+  <view class="account-info">
+    <image class="avatar" 
+           src="{{userInfo.avatarUrl}}" 
+           mode="aspectFill"/>
+    <view class="info">
+      <text class="nickname">{{userInfo.nickName}}</text>
+      <text class="account-id">账号ID：{{userInfo.id || '-'}}</text>
+    </view>
+  </view>
+
+  <!-- 菜单列表 -->
+  <view class="menu-list">
+    <view class="menu-item"
+          wx:for="{{menuList}}"
+          wx:key="title"
+          bindtap="handleMenuItem"
+          data-url="{{item.url}}">
+      <text class="title">{{item.title}}</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 注销账号 -->
+  <view class="delete-account" bindtap="handleDeleteAccount">
+    注销账号
+  </view>
+</view> 

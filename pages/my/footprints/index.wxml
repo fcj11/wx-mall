@@ -1,0 +1,38 @@
+<!--pages/my/footprints/index.wxml-->
+<view class="footprints-container">
+  <!-- 商品列表 -->
+  <scroll-view scroll-y class="goods-list" 
+               enhanced="{{true}}" 
+               show-scrollbar="{{false}}"
+               bindscrolltolower="loadMore">
+    <view class="goods-item" 
+          wx:for="{{goodsList}}" 
+          wx:key="id">
+      <view class="goods-content" bindtap="handleGoodsClick" data-id="{{item.id}}">
+        <image class="goods-image" src="{{item.image}}" mode="aspectFill" lazy-load/>
+        <view class="goods-info">
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-price">¥{{item.price}}</view>
+          <view class="browse-time">{{item.browseTime}}</view>
+        </view>
+      </view>
+      <view class="action-buttons">
+        <button class="action-btn delete" 
+                catchtap="handleDelete" 
+                data-id="{{item.id}}">
+          <text class="btn-icon">删</text>
+        </button>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-status">
+      <view wx:if="{{loading}}" class="loading">加载中...</view>
+      <view wx:if="{{finished && goodsList.length > 0}}" class="finished">没有更多了</view>
+      <view wx:if="{{finished && goodsList.length === 0}}" class="empty">
+        <text class="empty-icon">👣</text>
+        <text class="empty-text">暂无浏览记录</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

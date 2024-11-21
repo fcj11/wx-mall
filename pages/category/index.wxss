@@ -1,0 +1,207 @@
+.category-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* 搜索框样式 */
+.search-box {
+  padding: 20rpx 30rpx;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  height: 64rpx;
+  background: #f7f7f7;
+  border-radius: 32rpx;
+  padding: 0 30rpx;
+}
+
+.placeholder {
+  color: #999;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+.category-content-wrap {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 左侧导航样式 */
+.category-nav {
+  width: 180rpx;
+  height: 100%;
+  background: #f7f7f7;
+}
+
+.nav-item {
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #666;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-icon {
+  font-size: 36rpx;
+  margin-bottom: 6rpx;
+}
+
+.nav-text {
+  font-size: 24rpx;
+}
+
+.nav-item.active {
+  color: #ff2d4a;
+  background: #fff;
+  font-weight: bold;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 36rpx;
+  background: #ff2d4a;
+  border-radius: 0 4rpx 4rpx 0;
+}
+
+/* 右侧内容样式 */
+.category-content {
+  flex: 1;
+  height: 100%;
+  background: #f7f7f7;
+}
+
+.category-header {
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+
+.category-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.category-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+/* 瀑布流样式 */
+.waterfall {
+  display: flex;
+  padding: 10rpx;
+  justify-content: space-between;
+}
+
+.waterfall-column {
+  width: 48%;
+}
+
+.sub-category-item {
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.sub-category-item:active {
+  transform: scale(0.98);
+}
+
+.sub-category-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #f7f7f7;
+}
+
+.sub-category-info {
+  padding: 16rpx;
+}
+
+.sub-category-name {
+  font-size: 26rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+  font-weight: 500;
+}
+
+.sub-category-price-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rpx;
+}
+
+.price-group {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-symbol {
+  font-size: 22rpx;
+  color: #ff2d4a;
+}
+
+.sub-category-price {
+  font-size: 30rpx;
+  color: #ff2d4a;
+  font-weight: bold;
+  margin-left: 2rpx;
+}
+
+.sub-category-count {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 加载状态样式 */
+.loading-status {
+  padding: 30rpx;
+  text-align: center;
+}
+
+.loading, .finished {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.empty {
+  padding: 60rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 26rpx;
+  color: #999;
+} 

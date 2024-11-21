@@ -1,0 +1,30 @@
+<view class="container">
+  <!-- 收藏列表 -->
+  <scroll-view scroll-y class="collection-list" 
+               bindscrolltolower="loadMore"
+               enhanced="{{true}}" 
+               show-scrollbar="{{false}}">
+    <view class="collection-item" 
+          wx:for="{{collections}}" 
+          wx:key="id"
+          bindtap="handleGoodsClick"
+          data-id="{{item.id}}">
+      <image class="goods-image" src="{{item.image}}" mode="aspectFill"/>
+      <view class="goods-info">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-price">
+          <text class="price">¥{{item.price}}</text>
+          <button class="btn cancel-btn" 
+                  catchtap="handleCancelCollect" 
+                  data-id="{{item.id}}">取消收藏</button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{!collections.length}}">
+      <text class="empty-icon">❤️</text>
+      <text class="empty-text">暂无收藏商品</text>
+    </view>
+  </scroll-view>
+</view> 

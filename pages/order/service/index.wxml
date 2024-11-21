@@ -1,0 +1,89 @@
+<view class="service-container">
+  <!-- 商品信息 -->
+  <view class="goods-card">
+    <image class="goods-image" src="{{order.goodsList[0].image}}" mode="aspectFill"/>
+    <view class="goods-info">
+      <view class="goods-title">{{order.goodsList[0].title}}</view>
+      <view class="goods-specs">{{order.goodsList[0].specs}}</view>
+      <view class="goods-price">¥{{order.totalPrice}}</view>
+    </view>
+  </view>
+
+  <!-- 服务类型 -->
+  <view class="form-section">
+    <view class="section-title">服务类型</view>
+    <radio-group class="type-group" bindchange="handleTypeChange">
+      <label class="type-item">
+        <radio value="refund" checked="{{serviceType === 'refund'}}"/>
+        <text>仅退款</text>
+      </label>
+      <label class="type-item">
+        <radio value="return" checked="{{serviceType === 'return'}}"/>
+        <text>退货退款</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <!-- 退款原因 -->
+  <view class="form-section">
+    <view class="section-title">退款原因</view>
+    <picker bindchange="handleReasonChange" range="{{['多拍/拍错/不想要', '商品质量问题', '商品与描述不符', '其他原因']}}">
+      <view class="picker">
+        <text class="{{reason ? '' : 'placeholder'}}">{{reason || '请选择退款原因'}}</text>
+        <text class="arrow">></text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 退款金额 -->
+  <view class="form-section">
+    <view class="section-title">退款金额</view>
+    <view class="amount-input">
+      <text class="currency">¥</text>
+      <input type="digit" 
+             value="{{amount}}"
+             bindinput="handleAmountInput"
+             placeholder="请输入退款金额"/>
+    </view>
+    <view class="amount-tip">最多可退 ¥{{order.totalPrice}}</view>
+  </view>
+
+  <!-- 问题描述 -->
+  <view class="form-section">
+    <view class="section-title">问题描述</view>
+    <textarea class="description-input"
+              value="{{description}}"
+              bindinput="handleDescriptionInput"
+              placeholder="请详细描述问题，以便我们更好地处理"
+              maxlength="500"/>
+    <view class="word-count">{{description.length}}/500</view>
+  </view>
+
+  <!-- 上传凭证 -->
+  <view class="form-section">
+    <view class="section-title">上传凭证</view>
+    <view class="image-list">
+      <view class="image-item" 
+            wx:for="{{images}}" 
+            wx:key="*this">
+        <image src="{{item}}" 
+               mode="aspectFill"
+               bindtap="handlePreviewImage"
+               data-url="{{item}}"/>
+        <view class="delete-btn" 
+              catchtap="handleDeleteImage"
+              data-index="{{index}}">×</view>
+      </view>
+      <view class="upload-btn"
+            wx:if="{{images.length < maxImageCount}}"
+            bindtap="handleUploadImage">
+        <text class="icon">+</text>
+        <text class="text">上传图片</text>
+      </view>
+    </view>
+    <view class="upload-tip">最多上传{{maxImageCount}}张图片</view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn" bindtap="handleSubmit">提交申请</view>
+</view> 

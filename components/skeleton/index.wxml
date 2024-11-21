@@ -1,0 +1,6 @@
+<view class="skeleton {{animate ? 'animate' : ''}}" wx:if="{{loading}}">
+  <view class="skeleton-content">
+    <view class="skeleton-row" wx:for="{{row}}" wx:key="index"></view>
+  </view>
+</view>
+<slot wx:else></slot> 

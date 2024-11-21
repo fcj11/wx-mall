@@ -1,0 +1,102 @@
+<view class="category-container">
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <view class="search-input" bindtap="handleSearchClick">
+      <icon type="search" size="32rpx" color="#999"/>
+      <text class="placeholder">搜索商品</text>
+    </view>
+  </view>
+
+  <view class="category-content-wrap">
+    <!-- 左侧分类导航 -->
+    <scroll-view scroll-y class="category-nav">
+      <view class="nav-item {{currentCategory === index ? 'active' : ''}}"
+            wx:for="{{categories}}"
+            wx:key="id"
+            bindtap="handleCategoryClick"
+            data-index="{{index}}">
+        <text class="nav-icon">{{item.icon}}</text>
+        <text class="nav-text">{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧商品列表 -->
+    <scroll-view scroll-y class="category-content" 
+                 bindscrolltolower="loadMore"
+                 refresher-enabled="{{true}}"
+                 refresher-triggered="{{refreshing}}"
+                 bindrefresherrefresh="onPullDownRefresh">
+      <!-- 当前分类信息 -->
+      <view class="category-header">
+        <text class="category-title">{{categories[currentCategory].name}}</text>
+        <text class="category-desc">共{{subCategories.length}}个分类</text>
+      </view>
+
+      <!-- 子分类瀑布流列表 -->
+      <view class="waterfall">
+        <view class="waterfall-column">
+          <view class="sub-category-item"
+                wx:for="{{subCategories}}"
+                wx:key="id"
+                wx:if="{{index % 2 === 0}}"
+                bindtap="handleSubCategoryClick"
+                data-id="{{item.id}}">
+            <image src="{{item.image}}" 
+                   mode="widthFix" 
+                   class="sub-category-image"
+                   lazy-load
+                   id="category-image-{{index}}"
+                   data-index="{{index}}"
+                   bindload="handleImageLoad"/>
+            <view class="sub-category-info">
+              <text class="sub-category-name">{{item.name}}</text>
+              <view class="sub-category-price-box">
+                <view class="price-group">
+                  <text class="price-symbol">¥</text>
+                  <text class="sub-category-price">{{item.price}}</text>
+                </view>
+                <text class="sub-category-count">{{item.count}}件商品</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="waterfall-column">
+          <view class="sub-category-item"
+                wx:for="{{subCategories}}"
+                wx:key="id"
+                wx:if="{{index % 2 === 1}}"
+                bindtap="handleSubCategoryClick"
+                data-id="{{item.id}}">
+            <image src="{{item.image}}" 
+                   mode="widthFix" 
+                   class="sub-category-image"
+                   lazy-load
+                   id="category-image-{{index}}"
+                   data-index="{{index}}"
+                   bindload="handleImageLoad"/>
+            <view class="sub-category-info">
+              <text class="sub-category-name">{{item.name}}</text>
+              <view class="sub-category-price-box">
+                <view class="price-group">
+                  <text class="price-symbol">¥</text>
+                  <text class="sub-category-price">{{item.price}}</text>
+                </view>
+                <text class="sub-category-count">{{item.count}}件商品</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 加载状态 -->
+      <view class="loading-status">
+        <view wx:if="{{loading}}" class="loading">加载中...</view>
+        <view wx:if="{{finished && subCategories.length > 0}}" class="finished">没有更多了</view>
+        <view wx:if="{{finished && subCategories.length === 0}}" class="empty">
+          <image src="/static/images/empty.png" mode="aspectFit" class="empty-image"/>
+          <text class="empty-text">暂无数据</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view> 

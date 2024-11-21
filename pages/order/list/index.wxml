@@ -1,0 +1,100 @@
+<view class="order-container">
+  <!-- 顶部状态切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{type === 'all' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-type="all">全部</view>
+    <view class="tab-item {{type === 'unpaid' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-type="unpaid">待付款</view>
+    <view class="tab-item {{type === 'unshipped' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-type="unshipped">待发货</view>
+    <view class="tab-item {{type === 'unreceived' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-type="unreceived">待收货</view>
+    <view class="tab-item {{type === 'unrated' ? 'active' : ''}}" 
+          bindtap="handleTabChange" 
+          data-type="unrated">待评价</view>
+  </view>
+
+  <!-- 订单列表 -->
+  <scroll-view scroll-y class="order-list" 
+               enhanced="{{true}}" 
+               show-scrollbar="{{false}}"
+               bindscrolltolower="loadMore">
+    <view class="order-item" 
+          wx:for="{{orderList}}" 
+          wx:key="id"
+          bindtap="handleOrderClick"
+          data-id="{{item.id}}">
+      
+      <!-- 订单状态 -->
+      <view class="order-header">
+        <text class="shop-name">淘宝 CCKOK</text>
+        <text class="order-status">{{item.statusText}}</text>
+      </view>
+      
+      <!-- 商品信息 -->
+      <view class="goods-info">
+        <image class="goods-image" src="{{item.goodsList[0].image}}" mode="aspectFill"/>
+        <view class="goods-detail">
+          <view class="goods-title">{{item.goodsList[0].title}}</view>
+          <view class="goods-desc">{{item.goodsList[0].specs}}</view>
+          <view class="goods-count">x{{item.goodsList[0].quantity}}</view>
+        </view>
+        <view class="goods-price">
+          <text>¥{{item.goodsList[0].price}}</text>
+        </view>
+      </view>
+      
+      <!-- 订单操作 -->
+      <view class="order-action">
+        <view class="total-section">
+          <text class="total-label">共{{item.goodsList[0].quantity}}件商品 合计：</text>
+          <text class="total-price">¥{{item.totalPrice}}</text>
+        </view>
+        <view class="btn-group" catchtap>
+          <!-- 待付款状态 -->
+          <block wx:if="{{item.status === 'UNPAID'}}">
+            <button class="btn modify-btn" 
+                    catchtap="handleModify" 
+                    data-order="{{item}}">修改</button>
+            <button class="btn cancel-btn" 
+                    catchtap="handleCancel" 
+                    data-order="{{item}}">取消</button>
+            <button class="btn pay-btn" 
+                    catchtap="handlePayAgain" 
+                    data-order="{{item}}">继续付款</button>
+          </block>
+          
+          <!-- 待发货状态 -->
+          <block wx:if="{{item.status === 'UNSHIPPED'}}">
+            <button class="btn normal-btn">提醒发货</button>
+          </block>
+          
+          <!-- 待收货状态 -->
+          <block wx:if="{{item.status === 'UNRECEIVED'}}">
+            <button class="btn normal-btn">查看物流</button>
+            <button class="btn primary-btn">确认收货</button>
+          </block>
+          
+          <!-- 待评价状态 -->
+          <block wx:if="{{item.status === 'UNRATED'}}">
+            <button class="btn primary-btn">评价</button>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-status">
+      <view wx:if="{{loading}}" class="loading">加载中...</view>
+      <view wx:if="{{finished && orderList.length > 0}}" class="finished">没有更多了</view>
+      <view wx:if="{{finished && orderList.length === 0}}" class="empty">
+        <text class="empty-icon">📦</text>
+        <text class="empty-text">暂无相关订单</text>
+      </view>
+    </view>
+  </scroll-view>
+</view> 

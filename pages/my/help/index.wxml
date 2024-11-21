@@ -1,0 +1,65 @@
+<view class="help-container">
+  <!-- 搜索框 -->
+  <view class="search-section">
+    <view class="search-box">
+      <icon type="search" size="16" color="#999"/>
+      <input class="search-input"
+             value="{{searchValue}}"
+             placeholder="搜索问题"
+             confirm-type="search"
+             bindinput="handleSearch"/>
+    </view>
+  </view>
+
+  <!-- 热门问题 -->
+  <view class="hot-section">
+    <view class="section-title">热门问题</view>
+    <view class="hot-list">
+      <view class="hot-item"
+            wx:for="{{hotQuestions}}"
+            wx:key="*this"
+            bindtap="handleHotQuestion"
+            data-question="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 问题分类 -->
+  <view class="category-section">
+    <view class="category-item"
+          wx:for="{{categories}}"
+          wx:key="title"
+          wx:for-index="categoryIndex">
+      <view class="category-header">
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-title">{{item.title}}</text>
+      </view>
+      <view class="question-list">
+        <view class="question-item"
+              wx:for="{{item.questions}}"
+              wx:key="title"
+              wx:for-item="question"
+              wx:for-index="questionIndex">
+          <view class="question-header"
+                bindtap="handleToggleQuestion"
+                data-category-index="{{categoryIndex}}"
+                data-question-index="{{questionIndex}}">
+            <text class="question-title">{{question.title}}</text>
+            <text class="arrow {{expandedQuestions.includes(categoryIndex + '-' + questionIndex) ? 'up' : ''}}">></text>
+          </view>
+          <view class="question-content {{expandedQuestions.includes(categoryIndex + '-' + questionIndex) ? 'expanded' : ''}}">
+            {{question.content}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系客服 -->
+  <view class="contact-section">
+    <button class="contact-btn" open-type="contact" bindcontact="handleContact">
+      联系客服
+    </button>
+  </view>
+</view> 

@@ -1,0 +1,42 @@
+<!--pages/my/settings/index.wxml-->
+<view class="settings-container">
+  <view class="settings-list">
+    <view class="settings-item" bindtap="handleAccountSecurity">
+      <text class="item-name">账号与安全</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="settings-item" bindtap="handlePrivacy">
+      <text class="item-name">隐私设置</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="settings-item" bindtap="handleNotification">
+      <text class="item-name">消息通知</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="settings-item">
+      <text class="item-name">清除缓存</text>
+      <text class="cache-size">{{cacheSize}}</text>
+    </view>
+    <view class="settings-item">
+      <text class="item-name">当前版本</text>
+      <text class="version">{{version}}</text>
+    </view>
+  </view>
+
+  <view class="about-list">
+    <view class="settings-item" bindtap="handleAbout">
+      <text class="item-name">关于我们</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="settings-item" bindtap="handleUserAgreement">
+      <text class="item-name">用户协议</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="settings-item" bindtap="handlePrivacyPolicy">
+      <text class="item-name">隐私政策</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+</view>

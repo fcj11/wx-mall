@@ -1,0 +1,76 @@
+<view class="feedback-container">
+  <!-- 反馈类型选择 -->
+  <view class="type-section">
+    <view class="section-title">反馈类型</view>
+    <view class="type-list">
+      <view class="type-item {{type === 'bug' ? 'active' : ''}}"
+            bindtap="handleTypeChange"
+            data-type="bug">
+        <text class="icon">🐛</text>
+        <text>问题反馈</text>
+      </view>
+      <view class="type-item {{type === 'suggestion' ? 'active' : ''}}"
+            bindtap="handleTypeChange"
+            data-type="suggestion">
+        <text class="icon">💡</text>
+        <text>功能建议</text>
+      </view>
+      <view class="type-item {{type === 'other' ? 'active' : ''}}"
+            bindtap="handleTypeChange"
+            data-type="other">
+        <text class="icon">💬</text>
+        <text>其他</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 反馈内容 -->
+  <view class="content-section">
+    <view class="section-title">反馈内容</view>
+    <textarea class="content-input"
+              value="{{content}}"
+              placeholder="请详细描述您遇到的问题或建议..."
+              maxlength="500"
+              bindinput="handleContentInput"/>
+    <view class="word-count">{{content.length}}/500</view>
+  </view>
+
+  <!-- 图片上传 -->
+  <view class="image-section">
+    <view class="section-title">上传截图（选填）</view>
+    <view class="image-list">
+      <view class="image-item" 
+            wx:for="{{images}}" 
+            wx:key="*this">
+        <image src="{{item}}" 
+               mode="aspectFill"
+               bindtap="handlePreviewImage"
+               data-url="{{item}}"/>
+        <view class="delete-btn" 
+              catchtap="handleDeleteImage"
+              data-index="{{index}}">×</view>
+      </view>
+      <view class="upload-btn"
+            wx:if="{{images.length < maxImageCount}}"
+            bindtap="handleUploadImage">
+        <text class="icon">+</text>
+        <text class="text">上传图片</text>
+      </view>
+    </view>
+    <view class="upload-tip">最多上传{{maxImageCount}}张图片</view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="contact-section">
+    <view class="section-title">联系方式（选填）</view>
+    <input class="contact-input"
+           value="{{contact}}"
+           placeholder="请留下您的手机号或微信号，方便我们联系您"
+           bindinput="handleContactInput"/>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button class="submit-btn" bindtap="handleSubmit">提交反馈</button>
+  </view>
+</view> 

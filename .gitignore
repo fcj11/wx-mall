@@ -1,10 +1,9 @@
-# 开发工具配置
+node_modules/
 .DS_Store
-.idea
-.vscode
+dist/
+.env
 
 # 项目依赖
-node_modules/
 miniprogram_npm/
 
 # 小程序开发工具本地配置
@@ -12,7 +11,6 @@ project.config.json
 project.private.config.json
 
 # 编译和构建产物
-dist/
 .miniprogram/
 
 # 日志文件

@@ -1,0 +1,130 @@
+.coupon-list {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 20rpx;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.coupon-item {
+  margin: 20rpx;
+  margin-right: 30rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  position: relative;
+  overflow: hidden;
+  width: calc(100% - 50rpx);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coupon-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  position: relative;
+  padding-bottom: 36rpx;
+}
+
+.price-section {
+  display: flex;
+  align-items: baseline;
+  margin-right: 30rpx;
+  flex-shrink: 0;
+}
+
+.price-symbol {
+  font-size: 32rpx;
+  color: #ff2d4a;
+}
+
+.price {
+  font-size: 56rpx;
+  color: #ff2d4a;
+  font-weight: bold;
+}
+
+.coupon-info {
+  flex: 1;
+  min-width: 0;
+  margin-right: 20rpx;
+}
+
+.coupon-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coupon-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coupon-time {
+  font-size: 22rpx;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.use-btn {
+  padding: 12rpx 30rpx;
+  background: #ff2d4a;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+  border: none;
+  min-width: 120rpx;
+  text-align: center;
+  white-space: nowrap;
+  margin-right: 30rpx;
+  flex-shrink: 0;
+}
+
+.coupon-item.disabled {
+  opacity: 0.6;
+}
+
+.coupon-item.disabled .use-btn {
+  background: #999;
+}
+
+.coupon-decoration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #fff 0%, #fff 50%, transparent 50%);
+  background-size: 20rpx 100%;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 28rpx;
+} 

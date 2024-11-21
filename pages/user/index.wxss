@@ -1,0 +1,24 @@
+/* 联系客服按钮样式 */
+.contact-service {
+  width: 100%;
+  padding: 30rpx;
+  margin-bottom: 60rpx; /* 添加底部边距 */
+  box-sizing: border-box;
+}
+
+.contact-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 44rpx;
+  color: #666;
+  font-size: 28rpx;
+  border: 1rpx solid #eee;
+}
+
+/* 如果需要在 iPhone X 等机型上有更好的适配，可以添加安全区域边距 */
+.contact-service {
+  margin-bottom: calc(60rpx + env(safe-area-inset-bottom));
+} 

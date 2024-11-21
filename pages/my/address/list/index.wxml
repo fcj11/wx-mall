@@ -1,0 +1,40 @@
+<!--pages/my/address/list/index.wxml-->
+<view class="address-container">
+  <!-- 地址列表 -->
+  <view class="address-list">
+    <view class="address-item" wx:for="{{addresses}}" wx:key="id">
+      <view class="info" bindtap="handleEditAddress" data-id="{{item.id}}">
+        <view class="user-info">
+          <text class="name">{{item.name}}</text>
+          <text class="phone">{{item.phone}}</text>
+          <text class="default-tag" wx:if="{{item.isDefault}}">默认地址</text>
+        </view>
+        <view class="address-detail">
+          {{item.province}}{{item.city}}{{item.district}}{{item.detail}}
+        </view>
+      </view>
+      <view class="operations">
+        <view class="operation-item" catchtap="handleSetDefault" data-id="{{item.id}}" wx:if="{{!item.isDefault}}">
+          <text class="operation-text">设为默认</text>
+        </view>
+        <view class="operation-item" catchtap="handleDeleteAddress" data-id="{{item.id}}">
+          <text class="operation-text">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view class="empty-tip" wx:if="{{addresses.length === 0}}">
+    <image class="empty-image" src="/images/empty-address.png" mode="aspectFit"/>
+    <text>暂无收货地址\n添加一个收货地址吧</text>
+  </view>
+
+  <!-- 添加新地址按钮 -->
+  <view class="add-btn" bindtap="handleAddAddress">
+    <text>新增收货地址</text>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-area-block"></view>
+</view>

@@ -16,7 +16,7 @@ Page({
       {
         title: '我的收藏',
         icon: '❤️',
-        url: '/pages/my/favorites/index'
+        url: '/pages/my/favorite/index'
       },
       {
         title: '我的足迹',
@@ -31,7 +31,7 @@ Page({
       {
         title: '收货地址',
         icon: '📍',
-        url: '/pages/my/address/index'
+        url: '/pages/my/address/list/index'
       },
       {
         title: '帮助中心',
@@ -111,7 +111,7 @@ Page({
   handleLogin() {
     if (this.data.userInfo.nickName === '未登录') {
       wx.getUserProfile({
-        desc: '用于完善会员资料',
+        desc: '用于完善会员资���',
         success: (res) => {
           const userInfo = res.userInfo
           this.setData({ userInfo })
@@ -152,5 +152,12 @@ Page({
       title: '欢迎使用我的商城',
       path: '/pages/index/index'
     }
+  },
+
+  // 跳转到地址管理页面
+  goToAddress() {
+    wx.navigateTo({
+      url: '/pages/my/address/list/index'
+    })
   }
 }) 

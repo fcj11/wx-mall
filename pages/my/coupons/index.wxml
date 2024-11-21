@@ -50,20 +50,21 @@
             {{coupon.validStartTime}} - {{coupon.validEndTime}}
           </view>
           <view class="coupon-desc">{{coupon.description}}</view>
+                <!-- 优惠券底部 -->
+            <view class="coupon-footer">
+              <block wx:if="{{coupon.status === 'valid'}}">
+                <text class="use-btn">立即使用</text>
+              </block>
+              <block wx:elif="{{coupon.status === 'used'}}">
+                <text class="status-text">已使用 {{coupon.useTime}}</text>
+              </block>
+              <block wx:else>
+                <text class="status-text">已过期</text>
+              </block>
+            </view>
         </view>
       </view>
-      <!-- 优惠券底部 -->
-      <view class="coupon-footer">
-        <block wx:if="{{coupon.status === 'valid'}}">
-          <text class="use-btn">立即使用</text>
-        </block>
-        <block wx:elif="{{coupon.status === 'used'}}">
-          <text class="status-text">已使用 {{coupon.useTime}}</text>
-        </block>
-        <block wx:else>
-          <text class="status-text">已过期</text>
-        </block>
-      </view>
+     
     </view>
 
     <!-- 加载状态 -->

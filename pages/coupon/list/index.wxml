@@ -1,0 +1,29 @@
+<view class="coupon-list">
+  <view class="coupon-item {{item.disabled ? 'disabled' : ''}}" 
+        wx:for="{{coupons}}" 
+        wx:key="id">
+    <view class="coupon-content">
+      <view class="price-section">
+        <text class="price-symbol">¥</text>
+        <text class="price">{{item.price}}</text>
+      </view>
+      <view class="coupon-info">
+        <view class="coupon-title">{{item.title}}</view>
+        <view class="coupon-desc">{{item.desc}}</view>
+        <view class="coupon-time">{{item.validTime}}</view>
+      </view>
+      <button class="use-btn" 
+              bindtap="handleUse" 
+              data-id="{{item.id}}"
+              wx:if="{{!item.disabled}}">立即使用</button>
+      <text class="use-btn" wx:else>{{item.disabled ? '已过期' : '已使用'}}</text>
+    </view>
+    <view class="coupon-decoration"></view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!coupons.length}}">
+    <text class="empty-icon">🎫</text>
+    <text class="empty-text">暂无优惠券</text>
+  </view>
+</view> 

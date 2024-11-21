@@ -18,11 +18,13 @@ Page({
     const { id } = options
     this.loadGoodsDetail(id)
     this.getCartCount()
-    this.checkCollectionStatus()
   },
 
   onShow() {
-    this.addFootprint()
+    if (this.data.goods) {
+      this.addFootprint()
+      this.checkCollectionStatus()
+    }
   },
 
   // 加载商品详情
@@ -30,38 +32,41 @@ Page({
     wx.showLoading({ title: '加载中...' })
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 500))
+      // 模拟商品数据
+      const goodsInfo = {
+        id: id || '1',
+        title: 'CCKOK 可爱腊肠小狗正肩T恤',
+        desc: '这是一个商品描述示例',
+        price: '89.00',
+        originalPrice: '399.00',
+        sales: 1000,
+        reviewCount: 108,
+        images: [
+          'https://img.yzcdn.cn/vant/cat.jpeg',
+          'https://img.yzcdn.cn/vant/cat.jpeg'
+        ],
+        detail: '<p>这是商品详情的富文本内容</p>',
+        detailImages: [
+          'https://img.yzcdn.cn/vant/cat.jpeg',
+          'https://img.yzcdn.cn/vant/cat.jpeg'
+        ],
+        reviews: [
+          {
+            id: 1,
+            username: '用户***123',
+            avatar: 'https://img.yzcdn.cn/vant/cat.jpeg',
+            content: '商品很好，质量不错！',
+            date: '2024-02-20',
+            images: ['https://img.yzcdn.cn/vant/cat.jpeg']
+          }
+        ]
+      }
       
-      this.setData({
-        goods: {
-          id,
-          title: '商品标题示例',
-          desc: '这是一个商品描述示例',
-          price: '299.00',
-          originalPrice: '399.00',
-          sales: 1000,
-          reviewCount: 108,
-          images: [
-            'https://img.yzcdn.cn/vant/cat.jpeg',
-            'https://img.yzcdn.cn/vant/cat.jpeg'
-          ],
-          detail: '<p>这是商品详情的富文本内容</p>',
-          detailImages: [
-            'https://img.yzcdn.cn/vant/cat.jpeg',
-            'https://img.yzcdn.cn/vant/cat.jpeg'
-          ],
-          reviews: [
-            {
-              id: 1,
-              username: '用户***123',
-              avatar: 'https://img.yzcdn.cn/vant/cat.jpeg',
-              content: '商品很好，质量不错！',
-              date: '2024-02-20',
-              images: ['https://img.yzcdn.cn/vant/cat.jpeg']
-            }
-          ]
-        }
-      })
+      this.setData({ goods: goodsInfo })
+      
+      // 加载完商品信息后，添加足迹并检查收藏状态
+      this.addFootprint()
+      this.checkCollectionStatus()
       
       wx.hideLoading()
     } catch (error) {
@@ -284,14 +289,10 @@ Page({
   // 添加足迹记录
   addFootprint() {
     if (!this.data.goods) return
-    
     const footprints = wx.getStorageSync('footprints') || []
     const goodsInfo = this.data.goods
     
-    // 删除已存在的相同商品足迹
-    const filteredFootprints = footprints.filter(item => item.id !== goodsInfo.id)
-    
-    // 添加新足迹
+    // 创建足迹对象
     const footprintItem = {
       id: goodsInfo.id,
       title: goodsInfo.title,
@@ -300,11 +301,16 @@ Page({
       viewTime: new Date().getTime()
     }
     
+    // 删除已存在的相同商品足迹
+    const filteredFootprints = footprints.filter(item => item.id !== goodsInfo.id)
+    
     // 新足迹放在最前面
     filteredFootprints.unshift(footprintItem)
     
     // 只保留最近50条足迹
     const savedFootprints = filteredFootprints.slice(0, 50)
+    
+    // 保存到本地存储
     wx.setStorageSync('footprints', savedFootprints)
   }
 }) 

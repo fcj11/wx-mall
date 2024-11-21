@@ -39,7 +39,7 @@
                 wx:for="{{subCategories}}"
                 wx:key="id"
                 wx:if="{{index % 2 === 0}}"
-                bindtap="handleSubCategoryClick"
+                bindtap="handleGoodsClick"
                 data-id="{{item.id}}">
             <image src="{{item.image}}" 
                    mode="widthFix" 
@@ -65,7 +65,7 @@
                 wx:for="{{subCategories}}"
                 wx:key="id"
                 wx:if="{{index % 2 === 1}}"
-                bindtap="handleSubCategoryClick"
+                bindtap="handleGoodsClick"
                 data-id="{{item.id}}">
             <image src="{{item.image}}" 
                    mode="widthFix" 

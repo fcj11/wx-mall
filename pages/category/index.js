@@ -69,14 +69,6 @@ Page({
     this.loadSubCategories()
   },
 
-  // 点击子分类
-  handleSubCategoryClick(e) {
-    const { id } = e.currentTarget.dataset
-    wx.navigateTo({
-      url: `/pages/goods/list/index?categoryId=${id}`
-    })
-  },
-
   // 下拉刷新
   async onPullDownRefresh() {
     this.setData({
@@ -106,6 +98,14 @@ Page({
         subCategories[index].imageHeight = res[0].height
         this.setData({ subCategories })
       }
+    })
+  },
+
+  // 添加商品点击处理函数
+  handleGoodsClick(e) {
+    const { id } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/pages/goods/detail/index?id=${id}`
     })
   }
 }) 

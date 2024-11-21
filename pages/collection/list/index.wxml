@@ -1,4 +1,10 @@
 <view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="header" wx:if="{{collections.length}}">
+    <text>共{{collections.length}}件收藏商品</text>
+    <text class="clear-btn" bindtap="handleClearAll">清空收藏</text>
+  </view>
+
   <!-- 收藏列表 -->
   <scroll-view scroll-y class="collection-list" 
                bindscrolltolower="loadMore"

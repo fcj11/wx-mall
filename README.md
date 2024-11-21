@@ -14,34 +14,27 @@
   - 购物车
   - <img src="https://github.com/user-attachments/assets/c0d61b5b-efba-4011-aec1-0a5faafca552" width="100px">
   - 购物车编辑
-  - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px">
+  - <img src="https://github.com/user-attachments/assets/b483e476-abea-46de-9f6e-770a53c53e62" width="100px">
 - 订单管理
+  - <img src="https://github.com/user-attachments/assets/be6cb996-5181-4718-8d15-c95bad715f30" width="100px">
 - 个人中心
 - <img src="https://github.com/user-attachments/assets/24f2c8a2-6ff1-46d4-8246-305ba41c290f" width="100px">
   - 我的订单
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px">
-    - ![image](https://github.com/user-attachments/assets/29a0c5f1-0b52-42ca-8c4f-494f71176c3e)
+    - <img src="https://github.com/user-attachments/assets/29a0c5f1-0b52-42ca-8c4f-494f71176c3e" width="100px">
   - 收藏夹
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px"> 
-    - ![image](https://github.com/user-attachments/assets/237bef64-ce69-4ad6-99b4-e3ad9edda011)
+    - <img src="https://github.com/user-attachments/assets/237bef64-ce69-4ad6-99b4-e3ad9edda011" width="100px"> 
   - 浏览足迹
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px">
-    - ![image](https://github.com/user-attachments/assets/73aa22b1-98ee-4966-907b-fd5cd2cb9471)
+    - <img src="https://github.com/user-attachments/assets/73aa22b1-98ee-4966-907b-fd5cd2cb9471" width="100px">
   - 地址管理
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px"> 
-    - ![image](https://github.com/user-attachments/assets/774a298b-5ee9-4f2f-be21-9f14f6840fcf)
+    - <img src="https://github.com/user-attachments/assets/774a298b-5ee9-4f2f-be21-9f14f6840fcf" width="100px"> 
   - 优惠券管理
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px"> 
-    - ![image](https://github.com/user-attachments/assets/caf80b31-6a5e-4eb8-bbb3-0fcf5f233536)
+    - <img src="https://github.com/user-attachments/assets/caf80b31-6a5e-4eb8-bbb3-0fcf5f233536" width="100px"> 
   - 帮助中心
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px"> 
-    - ![image](https://github.com/user-attachments/assets/e035469a-3529-4145-ad46-6949f6bf2919)
+    - <img src="https://github.com/user-attachments/assets/e035469a-3529-4145-ad46-6949f6bf2919" width="100px"> 
   - 意见反馈
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px"> 
-    - ![image](https://github.com/user-attachments/assets/12a2ddb7-9ea1-4444-a5a0-617950dc3963)
+    - <img src="https://github.com/user-attachments/assets/12a2ddb7-9ea1-4444-a5a0-617950dc3963" width="100px"> 
   - 设置
-    - <img src="https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd" width="100px"> 
-    - ![image](https://github.com/user-attachments/assets/d44dba38-e445-4509-8930-8ae359da797d)
+    - <img src="https://github.com/user-attachments/assets/d44dba38-e445-4509-8930-8ae359da797d" width="100px"> 
 ## 项目结构
 miniprogram/
 ├── pages/

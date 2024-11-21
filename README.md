@@ -4,6 +4,8 @@
 
 ## 功能特性
 - 首页
+- <img src="[drawing.jpg](https://github.com/user-attachments/assets/24160b5b-f05b-41e8-803c-c4721d3fb308)" alt="drawing" width="100" height="100"/>
+
 - ![4381732213978_ pic_hd](https://github.com/user-attachments/assets/24160b5b-f05b-41e8-803c-c4721d3fb308)
 - 商品浏览和搜索
   - 搜索

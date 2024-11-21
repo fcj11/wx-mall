@@ -8,15 +8,13 @@
 - 商品浏览和搜索
   - 搜索
   - <img src="https://github.com/user-attachments/assets/9efd3391-6037-435a-b3dc-1020ff9cd861" width="100px">
-
-  - ![image](https://github.com/user-attachments/assets/9efd3391-6037-435a-b3dc-1020ff9cd861)
   - 商品浏览
-  - ![image](https://github.com/user-attachments/assets/47a7e839-6708-4aad-9751-539b111f84e0)
+  - <img src="https://github.com/user-attachments/assets/47a7e839-6708-4aad-9751-539b111f84e0" width="100px">
 - 商品分类
-- ![image](https://github.com/user-attachments/assets/9d1fdf83-c565-4bbe-9119-5a54d22764c1)
+  - <img src="https://github.com/user-attachments/assets/9d1fdf83-c565-4bbe-9119-5a54d22764c1" width="100px">
 - 购物车管理
-  - 购物车 
-  - ![image](https://github.com/user-attachments/assets/c0d61b5b-efba-4011-aec1-0a5faafca552)
+  - 购物车
+  - <img src="https://github.com/user-attachments/assets/c0d61b5b-efba-4011-aec1-0a5faafca552" width="100px">
   - 购物车编辑
   - ![image](https://github.com/user-attachments/assets/14110bf0-096c-4f8a-99fd-98332fd8b8bd)
 - 订单管理
